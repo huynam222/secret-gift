@@ -24,7 +24,7 @@ function verifyPassword() {
     if (passwordInput === correctPassword) {
         alert("Thành công! Bạn sẽ nhận món quà này chứ?");
         hintDiv.textContent = "Chúc mừng! Món quà được gửi tới bạn!";
-        
+
         // Hiển thị phần chúc mừng và video
         bearContainer.style.display = 'none';
         congratsDiv.style.display = 'block';
@@ -77,4 +77,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     verifyButton.addEventListener('click', verifyPassword);
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const verifyButton = document.getElementById('password');
+    const backgroundAudio = document.getElementById('backgroundAudio');
+    // Thiết lập âm lượng mặc định
+    backgroundAudio.volume = 0.3; // Ví dụ âm lượng là 50%
+
+    if (verifyButton) {
+        verifyButton.addEventListener('click', () => {
+            if (backgroundAudio.paused) {
+                backgroundAudio.play();
+            }
+        });
+    }
 });
