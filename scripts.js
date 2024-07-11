@@ -65,14 +65,15 @@ function resetPasswordField() {
     passwordField.value = ""; // Xóa nội dung trong input
 }
 
-function resetPageScale() {
-    document.body.style.transform = 'scale(1)';
-}
 document.addEventListener('DOMContentLoaded', () => {
     const verifyButton = document.getElementById('verify-button');
+
     // Xử lý khi input mất focus (bàn phím trên điện thoại được đóng lại)
+    const passwordInput = document.getElementById('password');
     if (window.innerWidth <= 768) { // Giả sử màn hình có chiều rộng nhỏ hơn hoặc bằng 768px là điện thoại
-        passwordInput.blur(); // Đóng bàn phím khi input mất focus
+        passwordInput.addEventListener('blur', () => {
+            window.scrollTo(0, 0); // Cuộn lên đầu trang để đóng bàn phím
+        });
     }
 
     verifyButton.addEventListener('click', verifyPassword);
