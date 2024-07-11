@@ -21,7 +21,7 @@ function verifyPassword() {
     const congratsVideo = document.getElementById('congratsVideo');
     const videoSource = document.getElementById('videoSource');
 
-    congratsVideo.volume = 0.1;
+    congratsVideo.volume = 0;
     if (passwordInput === correctPassword) {
         alert("Thành công! Bạn sẽ nhận món quà này chứ?");
         hintDiv.textContent = "Chúc mừng! Món quà được gửi tới bạn!";
