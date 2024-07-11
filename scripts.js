@@ -20,6 +20,7 @@ function verifyPassword() {
     const congratsText = document.getElementById('congratsText');
     const congratsVideo = document.getElementById('congratsVideo');
     const videoSource = document.getElementById('videoSource');
+    const backgroundAudio = document.getElementById('backgroundAudio');
 
     if (passwordInput === correctPassword) {
         alert("Thành công! Bạn sẽ nhận món quà này chứ?");
@@ -31,7 +32,7 @@ function verifyPassword() {
 
         // Cập nhật video và chúc mừng
         videoSource.setAttribute('src', 'fan.mp4');
-        congratsVideo.volume = 0;
+        congratsVideo.volume = 0; // Thiết lập âm lượng video
         congratsVideo.load(); // Tải lại video mới
         congratsVideo.play(); // Phát video
 
@@ -68,6 +69,10 @@ function resetPasswordField() {
 
 document.addEventListener('DOMContentLoaded', () => {
     const verifyButton = document.getElementById('verify-button');
+    const backgroundAudio = document.getElementById('backgroundAudio');
+
+    // Thiết lập âm lượng mặc định
+    backgroundAudio.volume = 0.2; // Ví dụ âm lượng là 30%
 
     // Xử lý khi input mất focus (bàn phím trên điện thoại được đóng lại)
     const passwordInput = document.getElementById('password');
@@ -78,15 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     verifyButton.addEventListener('click', verifyPassword);
-});
-document.addEventListener('DOMContentLoaded', () => {
-    const verifyButton = document.getElementById('password');
-    const backgroundAudio = document.getElementById('backgroundAudio');
-    // Thiết lập âm lượng mặc định
-    backgroundAudio.volume = 0.3; // Ví dụ âm lượng là 50%
 
-    if (verifyButton) {
-        verifyButton.addEventListener('click', () => {
+    // Phát nhạc nền khi trang được tải lên và có tương tác của người dùng
+    if (backgroundAudio) {
+        passwordInput.addEventListener('focus', () => {
             if (backgroundAudio.paused) {
                 backgroundAudio.play();
             }
