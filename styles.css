@@ -43,21 +43,6 @@ img {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.speech-bubble::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border: 10px solid transparent;
-    border-top-color: #fff;
-    border-bottom: 0;
-    margin-left: -10px;
-    margin-bottom: -10px;
-}
-
 input[type="password"] {
     padding: 10px;
     margin-bottom: 10px;
@@ -82,34 +67,4 @@ button {
 
 button:hover {
     background-color: #2980b9;
-}
-
-.hint {
-    color: red;
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-.congrats-message {
-    font-size: 24px;
-    color: #4CAF50;
-    margin-top: 20px;
-    animation: fadeIn 2s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.congrats-video {
-    width: 100%;
-    height: auto;
-    max-width: 400px;
-    margin-top: 20px;
-    animation: fadeIn 2s ease-in-out;
 }
