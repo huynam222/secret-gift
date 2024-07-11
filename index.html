@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="bear-container">
+            <img src="https://gcs.tripi.vn/public-tripi/tripi-feed/img/476938bNV/anh-mo-ta.png" alt="Bear GIF">
+            <div class="speech-bubble" id="hint">Hi! Nhập mật khẩu vào ô bên dưới nhé!</div>
+        </div>
+        <input type="password" id="password" placeholder="Nhập ở đây nè <3" onclick="moveInputRandomly()">
+        <button onclick="verifyPassword()">Xác minh</button>
+        <!-- Phần tử mới cho bức ảnh và đoạn chữ chúc mừng -->
+        <div id="congratulations" style="display: none; text-align: center;">
+            <img id="congratsImage" src="https://example.com/congrats.png" alt="Congratulations" style="width: 100%; max-width: 300px;">
+            <p id="congratsText" style="font-size: 18px; color: #333;">Chúc mừng! Bạn đã nhập đúng mật khẩu!</p>
+        </div>
+    </div>
+</body>
+</html>
