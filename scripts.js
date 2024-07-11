@@ -8,19 +8,35 @@ const hints = [
     "Gợi ý tiếp nhé: số 7!",
     "Gợi ý tiếp nhé: số 0!",
     "Còn số cuối thôi đó =)))!",
+    // Bạn có thể thêm nhiều gợi ý khác ở đây
 ];
-
 let hintIndex = 0;
 
 function verifyPassword() {
     const passwordInput = document.getElementById('password').value;
     const hintDiv = document.getElementById('hint');
+    const bearContainer = document.querySelector('.bear-container');
+    const congratsDiv = document.getElementById('congratulations');
+    const congratsText = document.getElementById('congratsText');
+    const congratsVideo = document.getElementById('congratsVideo');
+    const videoSource = document.getElementById('videoSource');
 
     if (passwordInput === correctPassword) {
         alert("Thành công! Bạn sẽ nhận món quà này chứ?");
         hintDiv.textContent = "Chúc mừng! Món quà được gửi tới bạn!";
+        
+        // Hiển thị phần chúc mừng và video
+        bearContainer.style.display = 'none';
+        congratsDiv.style.display = 'block';
+
+        // Cập nhật video và chúc mừng
+        videoSource.setAttribute('src', 'fan.mp4');
+        congratsVideo.load(); // Tải lại video mới
+        congratsVideo.play(); // Phát video
+
         hideElements();
     } else {
+        // Nếu nhập sai mật khẩu, hiển thị gợi ý
         if (hintIndex < hints.length) {
             hintDiv.textContent = hints[hintIndex];
             hintIndex++;
@@ -28,9 +44,10 @@ function verifyPassword() {
             hintDiv.textContent = "Sai ò=))) Có muốn làm lại không!";
         }
 
+        // Reset input sau 1 giây
         setTimeout(() => {
             hintDiv.textContent = "";
-            document.getElementById('password').value = "";
+            resetPasswordField();
         }, 1500);
     }
 }
@@ -39,8 +56,13 @@ function hideElements() {
     const passwordInput = document.getElementById('password');
     const verifyButton = document.getElementById('verify-button');
 
-    passwordInput.style.display = 'none';
-    verifyButton.style.display = 'none';
+    passwordInput.style.display = 'none'; // Ẩn input password
+    verifyButton.style.display = 'none'; // Ẩn button xác minh
+}
+
+function resetPasswordField() {
+    const passwordField = document.getElementById('password');
+    passwordField.value = ""; // Xóa nội dung trong input
 }
 
 document.addEventListener('DOMContentLoaded', () => {
