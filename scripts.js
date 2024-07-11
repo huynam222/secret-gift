@@ -21,7 +21,6 @@ function verifyPassword() {
     const congratsVideo = document.getElementById('congratsVideo');
     const videoSource = document.getElementById('videoSource');
 
-    congratsVideo.volume = 0;
     if (passwordInput === correctPassword) {
         alert("Thành công! Bạn sẽ nhận món quà này chứ?");
         hintDiv.textContent = "Chúc mừng! Món quà được gửi tới bạn!";
@@ -32,6 +31,7 @@ function verifyPassword() {
 
         // Cập nhật video và chúc mừng
         videoSource.setAttribute('src', 'fan.mp4');
+        congratsVideo.volume = 0;
         congratsVideo.load(); // Tải lại video mới
         congratsVideo.play(); // Phát video
 
