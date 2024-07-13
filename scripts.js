@@ -83,7 +83,7 @@ function showVideo() {
 
     // Cập nhật video và chúc mừng
     videoSource.setAttribute('src', 'fan.mp4');
-    congratsVideo.volume = 0.1; // Thiết lập âm lượng video
+    congratsVideo.volume = 0.5; // Thiết lập âm lượng video
     congratsVideo.load(); // Tải lại video mới
     congratsVideo.play(); // Phát video
 
