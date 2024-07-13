@@ -1,42 +1,30 @@
-const correctPassword = "0708";
+const correctPassword = "1";
 const hints = [
     "Vội thế nghĩ mật khẩu đã chứ😗",
-    "Chắc chắn chưa! Định nhập là gì á😂",
-    "Gợi ý nè: 4 kí tự nha",
-    "Gợi ý tiếp nhé: mật khẩu là số!",
-    "Gợi ý tiếp nhé: đầu tiên là số 0!",
-    "Gợi ý tiếp nhé: số 7!",
-    "Gợi ý tiếp nhé: số 0!",
-    "Còn số cuối thôi đó =)))!",
-    // Bạn có thể thêm nhiều gợi ý khác ở đây
+    "Gợi ý nè: nhiều người nghe đã mê rồi!",
+    "Bắt đầu bằng chữ L =))",
+    "Thế có thích Lương không?😏😏",
+    "Không, trả lời câu hỏi cơ! Có thích Lương không?",
+    "Hihi! Mật khẩu là thích 🙂🙂",
 ];
+
 let hintIndex = 0;
 
 function verifyPassword() {
-    const passwordInput = document.getElementById('password').value;
+    const passwordInput = document.getElementById('password');
+    const verifyButton = document.getElementById('verify-button');
     const hintDiv = document.getElementById('hint');
     const bearContainer = document.querySelector('.bear-container');
-    const congratsDiv = document.getElementById('congratulations');
-    const congratsText = document.getElementById('congratsText');
-    const congratsVideo = document.getElementById('congratsVideo');
-    const videoSource = document.getElementById('videoSource');
-    const backgroundAudio = document.getElementById('backgroundAudio');
+    const questionContainer = document.getElementById('question-container');
 
-    if (passwordInput === correctPassword) {
-        alert("Thành công! Bạn sẽ nhận món quà này chứ?");
-        hintDiv.textContent = "Chúc mừng! Món quà được gửi tới bạn!";
-
-        // Hiển thị phần chúc mừng và video
+    if (passwordInput.value === correctPassword) {
+        // Hiển thị phần chúc mừng
         bearContainer.style.display = 'none';
-        congratsDiv.style.display = 'block';
+        questionContainer.style.display = 'block'; // Hiển thị câu hỏi
 
-        // Cập nhật video và chúc mừng
-        videoSource.setAttribute('src', 'fan.mp4');
-        congratsVideo.volume = 0; // Thiết lập âm lượng video
-        congratsVideo.load(); // Tải lại video mới
-        congratsVideo.play(); // Phát video
-
-        hideElements();
+        // Ẩn ô nhập và nút xác minh
+        passwordInput.style.display = 'none'; // Ẩn input
+        verifyButton.style.display = 'none'; // Ẩn nút xác minh
     } else {
         // Nếu nhập sai mật khẩu, hiển thị gợi ý
         if (hintIndex < hints.length) {
@@ -46,25 +34,74 @@ function verifyPassword() {
             hintDiv.textContent = "Sai ò=))) Có muốn làm lại không!";
         }
 
-        // Reset input sau 1 giây
+        // Vô hiệu hóa ô nhập và nút xác minh trong 3 giây
+        disableInputs(true);
         setTimeout(() => {
             hintDiv.textContent = "";
             resetPasswordField();
-        }, 1500);
+            disableInputs(false); // Bật lại ô nhập và nút xác minh
+        }, 3000);
     }
 }
 
-function hideElements() {
+// Xử lý sự kiện cho nút "Có"
+document.getElementById('yes-button').addEventListener('click', function () {
+    showVideo(); // Gọi hàm để hiển thị video
+});
+
+// Lấy phần tử nút "Không"
+const noBtn = document.getElementById('no-button');
+const container = document.querySelector('.container'); // Thay thế '.container' bằng lớp của container của bạn
+
+// Hiệu ứng di chuyển cho nút "Không"
+noBtn.addEventListener("mouseover", () => {
+    const containerRect = container.getBoundingClientRect();
+    const noBtnRect = noBtn.getBoundingClientRect();
+
+    const maxX = containerRect.width - noBtnRect.width;
+    const maxY = containerRect.height - noBtnRect.height;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    noBtn.style.position = 'absolute'; // Đặt vị trí tuyệt đối
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+});
+
+function showVideo() {
+    const congratsDiv = document.getElementById('congratulations');
+    const congratsVideo = document.getElementById('congratsVideo');
+    const videoSource = document.getElementById('videoSource');
+    const bearContainer = document.querySelector('.bear-container');
+    const questionContainer = document.getElementById('question-container');
+
+    // Ẩn tất cả các phần tử khác
+    bearContainer.style.display = 'none'; // Ẩn hình gấu
+    questionContainer.style.display = 'none'; // Ẩn câu hỏi
+    congratsDiv.style.display = 'block'; // Hiển thị video
+
+    // Cập nhật video và chúc mừng
+    videoSource.setAttribute('src', 'fan.mp4');
+    congratsVideo.volume = 0.1; // Thiết lập âm lượng video
+    congratsVideo.load(); // Tải lại video mới
+    congratsVideo.play(); // Phát video
+
+    disableInputs(true); // Vô hiệu hóa ô nhập và nút xác minh
+}
+
+function disableInputs(disable) {
     const passwordInput = document.getElementById('password');
     const verifyButton = document.getElementById('verify-button');
 
-    passwordInput.style.display = 'none'; // Ẩn input password
-    verifyButton.style.display = 'none'; // Ẩn button xác minh
+    passwordInput.disabled = disable; // Vô hiệu hóa ô nhập
+    verifyButton.disabled = disable; // Vô hiệu hóa nút xác minh
 }
 
 function resetPasswordField() {
     const passwordField = document.getElementById('password');
     passwordField.value = ""; // Xóa nội dung trong input
+    passwordField.removeAttribute('readonly'); // Bỏ thuộc tính readonly để có thể nhập lại
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -72,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const backgroundAudio = document.getElementById('backgroundAudio');
 
     // Thiết lập âm lượng mặc định
-    backgroundAudio.volume = 0.2; // Ví dụ âm lượng là 30%
+    backgroundAudio.volume = 0.2; // Ví dụ âm lượng là 20%
 
     // Xử lý khi input mất focus (bàn phím trên điện thoại được đóng lại)
     const passwordInput = document.getElementById('password');
@@ -85,11 +122,9 @@ document.addEventListener('DOMContentLoaded', () => {
     verifyButton.addEventListener('click', verifyPassword);
 
     // Phát nhạc nền khi trang được tải lên và có tương tác của người dùng
-    if (backgroundAudio) {
-        passwordInput.addEventListener('focus', () => {
-            if (backgroundAudio.paused) {
-                backgroundAudio.play();
-            }
-        });
-    }
+    passwordInput.addEventListener('focus', () => {
+        if (backgroundAudio.paused) {
+            backgroundAudio.play();
+        }
+    });
 });

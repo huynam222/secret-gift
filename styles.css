@@ -1,70 +1,96 @@
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex; /* Đặt body là flex container */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    height: 100vh; /* Chiều cao 100% viewport height */
+    margin: 0; /* Xóa margin */
+    background: linear-gradient(135deg, #71b7e6, #9b59b6); /* Đặt nền gradient */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font chữ */
 }
 
 .container {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    position: relative;
+    text-align: center; /* Căn giữa nội dung text */
+    background: rgba(255, 255, 255, 0.8); /* Nền trắng mờ */
+    padding: 30px 50px; /* Padding cho container */
+    border-radius: 15px; /* Bo tròn các góc */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+    position: relative; /* Đặt vị trí tương đối */
 }
 
 .bear-container {
-    position: relative;
-    display: inline-block;
+    position: relative; /* Đặt vị trí tương đối */
+    display: inline-block; /* Hiển thị như inline block */
 }
 
 img {
-    width: auto;
-    height: 150px;
-    margin-bottom: 20px;
+    width: auto; /* Chiều rộng tự động */
+    height: 150px; /* Chiều cao cố định */
+    margin-bottom: 20px; /* Khoảng cách dưới */
 }
 
 .speech-bubble {
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 250px;
-    background: #fff;
-    border: 2px solid #000;
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center;
-    font-size: 14px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: absolute; /* Đặt vị trí tuyệt đối */
+    top: -20px; /* Cách trên 20px */
+    left: 50%; /* Căn giữa theo chiều ngang */
+    transform: translateX(-50%); /* Dịch chuyển để căn giữa */
+    width: 250px; /* Chiều rộng 250px */
+    background: #fff; /* Nền trắng */
+    border: 2px solid #000; /* Viền đen */
+    border-radius: 10px; /* Bo tròn các góc */
+    padding: 10px; /* Padding cho speech bubble */
+    text-align: center; /* Căn giữa text */
+    font-size: 14px; /* Kích thước chữ */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Đổ bóng */
 }
 
-input[type="password"] {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 80%;
-    max-width: 300px;
-    transition: transform 0.5s ease;
-    position: relative;
+.input-container {
+    display: flex; /* Đặt div này là flex container */
+    align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+    gap: 10px; /* Khoảng cách giữa các phần tử */
+    white-space: nowrap; /* Ngăn không cho các phần tử xuống dòng */
+}
+
+input[type="text"] {
+    padding: 10px; /* Padding cho input */
+    border: 1px solid #ccc; /* Viền màu xám */
+    border-radius: 5px; /* Bo tròn các góc */
+    width: 80%; /* Chiều rộng 80% */
+    max-width: 300px; /* Chiều rộng tối đa 300px */
+    transition: transform 0.5s ease; /* Hiệu ứng chuyển đổi */
+    position: relative; /* Đặt vị trí tương đối */
 }
 
 button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #3498db;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    padding: 10px 30px; /* Padding cho button */
+    border: none; /* Không viền */
+    border-radius: 5px; /* Bo tròn các góc */
+    background-color: #3498db; /* Màu nền */
+    color: white; /* Màu chữ */
+    font-size: 16px; /* Kích thước chữ */
+    cursor: pointer; /* Con trỏ khi hover */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu nền */
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: rgb(218, 13, 115); /* Màu nền khi hover */
+}
+
+#question-container {
+    margin-top: 20px; /* Khoảng cách phía trên */
+}
+
+#question-text {
+    margin: 10px 0; /* Khoảng cách giữa câu hỏi và nút */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font chữ */
+    font-size: 18px; /* Kích thước chữ */
+}
+
+button {
+    margin: 5px; /* Khoảng cách giữa các nút */
+}
+
+#video-message {
+    font-size: 20px; /* Kích thước chữ */
+    color: rgb(218, 13, 115); /* Màu chữ */
+    padding: 10px; /* Khoảng cách xung quanh chữ */
 }
