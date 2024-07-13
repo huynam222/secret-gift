@@ -1,11 +1,11 @@
-const correctPassword = "1";
+const correctPassword = "thích";
 const hints = [
     "Vội thế nghĩ mật khẩu đã chứ😗",
     "Gợi ý nè: nhiều người nghe đã mê rồi!",
     "Bắt đầu bằng chữ L =))",
     "Thế có thích Lương không?😏😏",
     "Không, trả lời câu hỏi cơ! Có thích Lương không?",
-    "Hihi! Mật khẩu là thích 🙂🙂",
+    "Hihi! Mật khẩu là thích nhé🙂🙂",
 ];
 
 let hintIndex = 0;
